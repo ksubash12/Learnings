@@ -6,6 +6,7 @@ pipeline
 	{
 		stage("Compile State")
 		{
+		//jkhkj
 			steps{
 			withMaven(maven : 'apache-maven-3.6.0')
 					{
