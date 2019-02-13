@@ -1,39 +1,32 @@
-pipeline
-{
-	agent any
-	
-	stages
-	{
-		stage("Compile State")
-		{
-		//jkhkjjkjk
-			steps{
-			withMaven(maven : 'apache-maven-3.6.0')
-					{
-					sh 'mvn clean compile'
-					}
-				}
-		}
-		stage("testing stage")
-		{
-			steps{
-			withMaven(maven : 'apache-maven-3.6.0')
-					{
-					sh 'mvn test'
-					}
-			
-				}
-		}
-		stage("testing stage")
-		{
-			steps{
-			withMaven(maven : 'apache-maven-3.6.0')
-					{
-					sh 'mvn build'
-					}
-			
-				}
-		}
-	
-	}
+pipeline {
+    agent any
+
+    stages {
+        stage ('Compile Stage') {
+
+            steps {
+                withMaven(maven : 'Maven') {
+                    sh 'mvn clean compile'
+                }
+            }
+        }
+
+        stage ('Testing Stage') {
+
+            steps {
+                withMaven(maven : 'Maven') {
+                    sh 'mvn test'
+                }
+            }
+        }
+
+
+        stage ('Deployment Stage') {
+            steps {
+                withMaven(maven : 'Maven') {
+                    sh 'mvn deploy'
+                }
+            }
+        }
+    }
 }
